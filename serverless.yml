@@ -1,4 +1,4 @@
-service: check-website-for-string
+service: check-website-content
 
 provider:
   name: aws
@@ -11,5 +11,5 @@ functions:
       - schedule: rate(2 minutes)
     environment:
       URL: http://example.com/api/v1
-      REGEX: /SOME-REGEX/
-      SENDGRID: XXXX
+      REGEX: SOME-REGEX
+      SENDGRID: APIKEY

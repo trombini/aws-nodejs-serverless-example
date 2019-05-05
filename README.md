@@ -38,6 +38,11 @@ All fields are required and time zone is UTC only.
 
 Read the [AWS cron expression syntax](http://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-expressions.html) docs for more info on how to setup cron
 
+## Test
+```bash
+REGEX='REGEX' URL='https://example.com' SENDGRID='APIKEY' node --inspect-brk test.js
+```
+
 ## Deploy
 
 In order to deploy the endpoint you simply run
