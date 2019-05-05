@@ -1,0 +1,15 @@
+service: check-website-for-string
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  cron:
+    handler: handler.run
+    events:
+      - schedule: rate(2 minutes)
+    environment:
+      URL: http://example.com/api/v1
+      REGEX: /SOME-REGEX/
+      SENDGRID: XXXX
