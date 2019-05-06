@@ -40,7 +40,7 @@ Read the [AWS cron expression syntax](http://docs.aws.amazon.com/lambda/latest/d
 
 ## Test
 ```bash
-REGEX='REGEX' URL='https://example.com' SENDGRID='APIKEY' node --inspect-brk test.js
+REGEX='REGEX' URL='https://example.com' SENDGRID='APIKEY' EMAIL='recipient@example.com' node --inspect-brk test.js
 ```
 
 ## Deploy

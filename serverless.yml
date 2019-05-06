@@ -13,3 +13,4 @@ functions:
       URL: http://example.com/api/v1
       REGEX: SOME-REGEX
       SENDGRID: APIKEY
+      EMAIL: recipient@example.com

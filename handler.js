@@ -21,6 +21,7 @@ module.exports.run = (event, context, callback) => {
   const url = process.env.URL;
   const regex = process.env.REGEX;
   const sendgridApiKey = process.env.SENDGRID;
+  const email = process.env.EMAIL;
 
   console.log(`Parse URL '${url}' for Regex '${regex}'`);
 
@@ -28,15 +29,15 @@ module.exports.run = (event, context, callback) => {
   requestWebsite(url)
     .then(checkResponseWithRegex)
     .then(async (match) => {
-      if (!match) {
-        console.log('Send email');
+      if (match) {
+        console.log(`Found regex in URL. Send email to '${email}'`);
         // initiate sendgrid correctly with ApiKey
         sendgrid.setApiKey(sendgridApiKey);
         await sendgrid.send({
-          to: 'riccardo@trombini.ch',
-          from: 'riccardo@trombini.ch',
-          subject: 'AWS LAMDA',
-          text: `Regex for url '${url}' matched`
+          to: email,
+          from: email,
+          subject: `Regex '${regex}' for url '${url}' matched`,
+          text: `Regex '${regex}' for url '${url}' matched`
         });
       }
     });
