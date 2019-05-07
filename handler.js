@@ -4,8 +4,9 @@ const axios = require('axios');
 const sendgrid = require('@sendgrid/mail');
 
 const doRegex = r => (data) => {
-  const regularEx = new RegExp(r);
-  const result = data.match(regularEx);
+  const regex = new RegExp(r);
+  console.log(`Apply regex ${regex}`);
+  const result = data.match(regex);
   return Promise.resolve(result);
 };
 
@@ -29,6 +30,7 @@ module.exports.run = (event, context, callback) => {
   requestWebsite(url)
     .then(checkResponseWithRegex)
     .then(async (match) => {
+      console.log(`Regex matched: ${match}`);
       if (match) {
         console.log(`Found regex in URL. Send email to '${email}'`);
         // initiate sendgrid correctly with ApiKey
