@@ -1,26 +1,17 @@
+# Website Monitor
+
+This project monitors a specific URL to match a predefined regular expression. In case of a match it will send an email to the configured email address. 
+
+The services makes use of the AWS Lamda stack to schedule the app every two minutes.
 
 
-his project
-
-It makes use of the AWS Lamda stack to schedule the script every two minutes.
-
-
-
-
-
-
-# AWS Node Scheduled Cron Example to check website for string
-
-
-T
-
-
+## Serverless with AWS Node
 
 This is an example of creating a function that runs as a cron job using the serverless `schedule` event. For more information on `schedule` event check out the Serverless docs on [schedule](https://serverless.com/framework/docs/providers/aws/events/schedule/).
 
 Schedule events use the `rate` or `cron` syntax.
 
-## Rate syntax
+### Rate syntax
 
 ```pseudo
 rate(value unit)
@@ -34,7 +25,7 @@ rate(value unit)
 
 For more [information on the rate syntax see the AWS docs](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#RateExpressions)
 
-## Cron syntax
+### Cron syntax
 
 ```pseudo
 cron(Minutes Hours Day-of-month Month Day-of-week Year)
@@ -53,12 +44,12 @@ All fields are required and time zone is UTC only.
 
 Read the [AWS cron expression syntax](http://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-expressions.html) docs for more info on how to setup cron
 
-## Test
+### Test
 ```bash
 REGEX='REGEX' URL='https://example.com' SENDGRID='APIKEY' EMAIL='recipient@example.com' node --inspect-brk test.js
 ```
 
-## Deploy
+### Deploy
 
 In order to deploy the endpoint you simply run
 
@@ -91,13 +82,13 @@ layers:
   None
 ```
 
-## Configure Environment
+### Configure Environment
 
 **Regex**
 An email will be sent out if the provided regular expression is machted. If you want to negate a regular expression, you can do it like this `^((?!not available).)*$`.
 
 
-## Logs
+### Logs
 **AWS CloudWatch Logs**
 * [Open the Logs page of the CloudWatch console.](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logs:)
 
